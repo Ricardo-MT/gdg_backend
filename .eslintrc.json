@@ -1,0 +1,96 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["unused-imports"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-await-in-loop": "off",
+    "unused-imports/no-unused-imports": "error",
+    "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": ["arrow-function"],
+        "unnamedComponents": ["function-expression"]
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index", "object"],
+          "unknown",
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "*/**",
+            "patternOptions": {
+              "nocomment": false
+            },
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [],
+        // "distinctGroup": false,
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "warnOnUnassignedImports": true
+      }
+    ],
+    "no-use-before-define": "off",
+    "no-plusplus": "off",
+    "semi": ["error", "always"],
+    "max-len": ["error", { "code": 80 }],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "trailingComma": "all"
+      }
+    ],
+    "import/no-cycle": "error",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["../", "./"]
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "no-type-imports"
+      }
+    ],
+    "comma-dangle": ["error", "always-multiline"],
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "rules": {
+        "semi": "error",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
+}

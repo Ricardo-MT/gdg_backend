@@ -27,6 +27,7 @@
     "nodemailer": "^6.7.1",
     "passport": "^0.4.1",
     "secure-random-password": "^0.2.3",
+    "supertest": "^6.3.3",
     "ts-node": "^10.4.0",
     "typescript": "^3.7.5",
     "underscore": "^1.9.2",
@@ -34,9 +35,11 @@
     "xlsx": "^0.17.4"
   },
   "scripts": {
+    "start": "ts-node -r tsconfig-paths/register server.ts",
     "test": "jest",
-    "start": "ts-node server.ts",
-    "seeds": "ts-node --project tsconfig.json seeds/index.ts"
+    "seeds": "ts-node --project tsconfig.json -r tsconfig-paths/register seeds/index.ts",
+    "prettier": "npx prettier --write .",
+    "lint": "eslint . --ext .ts"
   },
   "author": "Ricardo Mejias Travieso",
   "license": "ISC",
@@ -49,7 +52,17 @@
     ]
   },
   "devDependencies": {
-    "@types/pdfkit": "^0.12.6",
-    "@types/pdfmake": "^0.2.1"
+    "@types/jest": "^29.2.4",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "2.8.1",
+    "tsconfig-paths": "^4.1.1"
   }
 }
