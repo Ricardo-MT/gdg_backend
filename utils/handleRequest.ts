@@ -1,7 +1,6 @@
 import { Response } from 'express';
 
-// eslint-disable-next-line no-restricted-imports
-import { handleServerError } from './errors';
+import { handleServerError } from 'utils/errors';
 
 const handleRequest = async (
   res: Response,

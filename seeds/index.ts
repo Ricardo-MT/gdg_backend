@@ -3,7 +3,7 @@ import config from 'config';
 import mongoose from 'mongoose';
 
 import Logger from 'loaders/logger';
-import userSeeds from 'seeds/user.seeds';
+import editionSeeds from 'seeds/edition.seeds';
 
 async function seeds() {
   try {
@@ -13,7 +13,7 @@ async function seeds() {
     console.log('EMPEZAMOS LOS SEEDS');
 
     /* --- AQUI VAN LOS SEEDS ---*/
-    await userSeeds();
+    await editionSeeds();
     /* --- AQUI TERMINAN LOS SEEDS ---*/
 
     console.log('ACABAMOS LOS SEEDS');
