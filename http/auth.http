@@ -1,0 +1,22 @@
+########### REST Client ### For Testing API
+# baseURL
+@baseURL = {{$dotenv API_URL}}
+###
+# check logged user data
+GET {{ baseURL }}/authentication
+
+
+###
+# Log in 
+POST {{ baseURL }}/authentication
+Content-Type: application/json
+
+{
+    "email": "{{$dotenv TEST_USER_EMAIL}}",
+	"password": "{{$dotenv TEST_USER_PASSWORD}}"
+}
+
+
+###
+# Logout
+DELETE {{ baseURL }}/authentication

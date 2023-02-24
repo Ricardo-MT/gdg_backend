@@ -14,7 +14,7 @@
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "sourceMap": true,
-    //"outDir": "./build",
+    "outDir": "./build",
     "allowJs": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
