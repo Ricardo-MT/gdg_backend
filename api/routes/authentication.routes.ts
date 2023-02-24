@@ -20,5 +20,17 @@ export default (app: Router) => {
     }),
     authenticationController.login,
   );
+  route.post(
+    '/register',
+    celebrate({
+      body: Joi.object({
+        email: Joi.string().required(),
+        password: Joi.string().required(),
+        name: Joi.string().required(),
+        surname: Joi.string().required(),
+      }),
+    }),
+    authenticationController.register,
+  );
   route.delete('/', middlewares.isAuth, authenticationController.logout);
 };
