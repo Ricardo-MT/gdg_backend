@@ -49,7 +49,9 @@ class AuthenticationController {
 
   public logout = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      req.logout();
+      Logger.debug('Inicio proceso de logout');
+      const { email } = req.body;
+      req.logout(email);
       return res.status(200).json({ status: 200, message: 'Logout correcto' });
     } catch (e) {
       Logger.error(e);
