@@ -79,6 +79,50 @@ class AuthenticationController {
       });
     }
   };
+
+  // eslint-disable-next-line consistent-return
+  public register = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      Logger.debug('Inicio proceso de registro');
+      const { email, password, name, surname } = req.body;
+      if (email && password) {
+        const { user, correct } = await AuthenticationService.register(
+          email,
+          password,
+          name,
+          surname,
+        );
+        if (correct) {
+          req.login(user, (err) => {
+            if (err) throw err;
+            Logger.debug('Logueado correctamente.');
+            return res.status(200).json({
+              status: 200,
+              user,
+              message: 'Inicio de sesión correcto luego de registro.',
+            });
+          });
+        } else {
+          return res.status(401).json({
+            status: 401,
+            message: 'Los datos introducidos no son correctos.',
+          });
+        }
+      } else {
+        return res.status(401).json({
+          status: 401,
+          message: 'Algun que otro campo esta sin valor.',
+        });
+      }
+    } catch (e) {
+      Logger.debug('ERROR EN EL REGISTER');
+      Logger.error(e);
+      return res.status(400).json({
+        status: 400,
+        message: 'Error inesperado en register. Contacte con el administrador.',
+      });
+    }
+  };
 }
 
 export default AuthenticationController;

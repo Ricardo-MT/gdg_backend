@@ -16,6 +16,17 @@ Content-Type: application/json
 	"password": "{{$dotenv TEST_USER_PASSWORD}}"
 }
 
+###
+# Register 
+POST {{ baseURL }}/authentication/register
+Content-Type: application/json
+
+{
+    "email": "a@gmail.com",
+	"password": "asd123asd",
+    "name":"aLejandro",
+    "surname":"martin linars"
+}
 
 ###
 # Logout
