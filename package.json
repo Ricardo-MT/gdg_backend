@@ -36,6 +36,7 @@
   },
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register server.ts",
+    "dev": "nodemon -r tsconfig-paths/register server.ts",
     "test": "jest --runInBand",
     "seeds": "ts-node --project tsconfig.json -r tsconfig-paths/register seeds/index.ts",
     "prettier": "npx prettier --write .",
