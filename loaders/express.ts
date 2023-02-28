@@ -1,4 +1,4 @@
-import routes from 'api';
+import { routes } from 'api';
 import config from 'config';
 import busboy from 'connect-busboy';
 import connectStore from 'connect-mongo';
@@ -61,7 +61,7 @@ export default async (connection: Connection): Promise<express.Application> => {
 
   app.use(config.api.prefix, express.static('api/data'));
   // Load API routes
-  app.use(config.api.prefix, routes());
-
+  /* app.use(config.api.prefix, routes()); */
+  app.use(config.api.prefix, routes);
   return app;
 };

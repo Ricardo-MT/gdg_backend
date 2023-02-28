@@ -2,10 +2,10 @@ import { Router } from 'express';
 
 import SkillsController from 'controllers/skills.controllers';
 
-const route = Router();
+const router = Router();
 
-export default (app: Router) => {
-  const controller = new SkillsController();
-  app.use('/skills', route);
-  route.get('/', controller.fetchAll);
-};
+const controller = new SkillsController();
+router.get('/', controller.fetchAll);
+
+// eslint-disable-next-line import/prefer-default-export
+export { router };
