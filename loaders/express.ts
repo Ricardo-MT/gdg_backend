@@ -18,7 +18,7 @@ export default async (connection: Connection): Promise<express.Application> => {
   await passportLoader();
 
   app.get('/status', (req, res) => {
-    return res.json({ hola: 'hla' }).status(200);
+    return res.json({ status: 'online' }).status(200);
   });
   app.head('/status', (req, res) => {
     res.status(200).end();
