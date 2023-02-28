@@ -1,8 +1,6 @@
 import config from 'config';
 import mongoose from 'mongoose';
 
-// var mongoose = require('mongoose');
-
 export default async () => {
   const uri = config.ATLAS_URI;
   await mongoose.connect(uri, {

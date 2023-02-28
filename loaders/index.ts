@@ -9,11 +9,6 @@ const indexLoader = async () => {
   Logger.info('Express inicializado');
 
   return { app, connection: mongoConnection };
-
-  // ... more loaders can be here
-
-  // ... Initialize agenda
-  // ... or Redis, or whatever you want
 };
 
 export default indexLoader;

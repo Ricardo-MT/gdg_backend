@@ -36,6 +36,7 @@ Este repositorio se configuró con la siguiente configuración del "settings.jso
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
+    "typescript.preferences.importModuleSpecifier": "non-relative",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true
@@ -52,6 +53,7 @@ Este repositorio se configuró con la siguiente configuración del "settings.jso
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
+    "typescript.preferences.importModuleSpecifier": "non-relative",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": false
