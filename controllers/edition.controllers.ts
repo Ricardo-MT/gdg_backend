@@ -14,6 +14,14 @@ export default class EditionsController {
   }
 
   // eslint-disable-next-line consistent-return
+  public async get3Last(req: Request, res: Response) {
+    handleRequest(res, async () => {
+      const editions = await EditionService.get3Last();
+      return res.status(200).json({ status: 200, editions });
+    });
+  }
+
+  // eslint-disable-next-line consistent-return
   public create = async (req: Request, res: Response, next: NextFunction) => {
     try {
       Logger.debug('Inicio proceso de creacion Edicion');

@@ -6,6 +6,10 @@
 GET {{ baseURL }}/edition
 
 ###
+# get 3 last editions data
+GET {{ baseURL }}/edition/get3last
+
+###
 # Log in 
 POST {{ baseURL }}/edition/create
 Content-Type: application/json

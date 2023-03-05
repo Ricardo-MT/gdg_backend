@@ -7,6 +7,7 @@ const router = Router();
 
 const controller = new EditionController();
 router.get('/', controller.getEditions);
+router.get('/get3last', controller.get3Last);
 router.post(
   '/create',
   celebrate({

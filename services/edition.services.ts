@@ -25,6 +25,26 @@ class EditionService {
     }
   }
 
+  // Get 3 last
+  public async get3Last() {
+    try {
+      const editions = await Edition.find().sort({ _id: -1 }).limit(3);
+      return editions;
+    } catch (error) {
+      const e = 'Error consultando las ediciones.';
+      if (error instanceof mongo.MongoError) {
+        switch (error.code) {
+          case 11000:
+            // e += " error";
+            break;
+          default:
+            break;
+        }
+      }
+      throw new CustomError(error, e);
+    }
+  }
+
   // create
   public create = async (
     organizer: string,
