@@ -1,0 +1,7 @@
+########### REST Client ### For Testing API
+# baseURL
+@baseURL = {{$dotenv API_URL}}
+###
+# get all editions data
+GET {{ baseURL }}/edition
+
