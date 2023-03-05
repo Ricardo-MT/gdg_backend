@@ -5,3 +5,15 @@
 # get all editions data
 GET {{ baseURL }}/edition
 
+###
+# Log in 
+POST {{ baseURL }}/edition/create
+Content-Type: application/json
+
+{
+    "organizer": "GDG Algeciras 4",
+	"date": "1645725600000",
+    "location":"Centro Documental ",
+    "title":"GDG Algeciras Febrero ",
+    "description":"un nuevo evento, con dos ponencias muy"
+}

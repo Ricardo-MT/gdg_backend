@@ -1,5 +1,6 @@
 import { mongo } from 'mongoose';
 
+import { IEdition } from 'interfaces/IEdition';
 import Edition from 'models/edition.model';
 import { CustomError } from 'utils/errors';
 
@@ -23,6 +24,41 @@ class EditionService {
       throw new CustomError(error, e);
     }
   }
+
+  // create
+  public create = async (
+    organizer: string,
+    date: string,
+    location: string,
+    title: string,
+    description: string,
+  ): Promise<{ edition: IEdition; correct: boolean }> => {
+    try {
+      let err;
+      let edition = new Edition();
+      edition = await Edition.create({
+        organizer,
+        date,
+        location,
+        title,
+        description,
+      });
+      if (err) throw err;
+      return { edition, correct: true };
+    } catch (error) {
+      let e = 'Error en create.';
+      if (error.code) {
+        switch (error.code) {
+          case 11000:
+            e += ' Ya existe una edicion con esos datos.';
+            break;
+          default:
+            break;
+        }
+      }
+      throw new CustomError(error, e);
+    }
+  };
 }
 
 export default new EditionService();
