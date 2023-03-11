@@ -8,7 +8,9 @@ class EditionService {
   // Get all Editions
   public async fetchAll() {
     try {
-      const editions = await Edition.find({}).sort({ organizer: 1 });
+      const editions = await Edition.find({
+        date: { $lte: new Date() },
+      }).sort({ _id: -1 });
       return editions;
     } catch (error) {
       const e = 'Error consultando las ediciones.';
@@ -28,7 +30,11 @@ class EditionService {
   // Get 3 last
   public async get3Last() {
     try {
-      const editions = await Edition.find().sort({ _id: -1 }).limit(3);
+      const editions = await Edition.find({
+        date: { $lte: new Date() },
+      })
+        .sort({ _id: -1 })
+        .limit(3);
       return editions;
     } catch (error) {
       const e = 'Error consultando las ediciones.';
@@ -48,7 +54,7 @@ class EditionService {
   // create
   public create = async (
     organizer: string,
-    date: string,
+    date: Date,
     location: string,
     title: string,
     description: string,
