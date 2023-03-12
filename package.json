@@ -25,6 +25,7 @@
     "mongoose": "^5.9.1",
     "mongoose-history": "^0.8.0",
     "nodemailer": "^6.7.1",
+    "nodemon": "^2.0.21",
     "passport": "^0.4.1",
     "secure-random-password": "^0.2.3",
     "supertest": "^6.3.3",
