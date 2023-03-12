@@ -45,11 +45,22 @@ const editionSchema = new Schema(
     talks: {
       type: [
         {
-          createdBy: Schema.Types.ObjectId,
-          speakersIds: [Schema.Types.ObjectId],
           title: String,
           description: String,
           skills: [String],
+          createdBy: {
+            type: Schema.Types.ObjectId,
+            required: true,
+            ref: 'User',
+          },
+          speakersIds: [
+            {
+              type: Schema.Types.ObjectId,
+              required: true,
+              ref: 'User',
+              minlength: 1,
+            },
+          ],
         },
       ],
       required: true,
