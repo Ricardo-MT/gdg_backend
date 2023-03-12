@@ -10,7 +10,7 @@ class EditionService {
     try {
       const editions = await Edition.find({
         date: { $lte: new Date() },
-      }).sort({ _id: -1 });
+      }).sort({ date: -1 });
       return editions;
     } catch (error) {
       const e = 'Error consultando las ediciones.';
@@ -33,7 +33,7 @@ class EditionService {
       const editions = await Edition.find({
         date: { $lte: new Date() },
       })
-        .sort({ _id: -1 })
+        .sort({ date: -1 })
         .limit(3);
       return editions;
     } catch (error) {
@@ -76,11 +76,9 @@ class EditionService {
 
   public getNextEdition = async (): Promise<IEdition | null> => {
     try {
-      const now = new Date().valueOf();
-      const query = {
-        date: { $gt: now },
-      };
-      const editions = await Edition.find(query)
+      const editions = await Edition.find({
+        date: { $gt: new Date() },
+      })
         .sort({ date: 1 })
         .limit(1)
         .populate({
