@@ -22,9 +22,10 @@ export default class EditionsController {
   public async getById(req: Request, res: Response) {
     Logger.info('Fetching by id');
     handleRequest(res, async () => {
-      const { params } = req;
-      Logger.info(params.editionId);
-      const edition = await EditionService.getById(String(params.editionId));
+      const { params, query } = req;
+      console.log(query.id);
+      Logger.info(query.id);
+      const edition = await EditionService.getById(String(query.id));
       return res.status(200).json({ status: 200, edition });
     });
   }

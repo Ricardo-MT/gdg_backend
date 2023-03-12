@@ -8,7 +8,7 @@ const router = Router();
 const controller = new EditionController();
 router.get('/', controller.getEditions);
 router.get('/get3last', controller.get3Last);
-router.get('/getById/:editionId', controller.getById);
+router.get('/getById', controller.getById);
 router.get('/getNextEdition', controller.getNextEdition);
 router.post(
   '/create',
