@@ -4,7 +4,7 @@ import { Router } from 'express';
 
 const routes = Router();
 
-const PATH_ROUTER = `${__dirname}\\routes`;
+const PATH_ROUTER = `${__dirname}/routes`;
 
 const cleanFileName = (fileName: string) => {
   const file = `${fileName.split('.')[0]}.${fileName.split('.')[1]}`;
