@@ -5,7 +5,6 @@ import EditionService from 'services/edition.services';
 import handleRequest from 'utils/handleRequest';
 
 export default class EditionsController {
-  // eslint-disable-next-line consistent-return
   public async getEditions(req: Request, res: Response) {
     handleRequest(res, async () => {
       const editions = await EditionService.fetchAll();
@@ -13,7 +12,6 @@ export default class EditionsController {
     });
   }
 
-  // eslint-disable-next-line consistent-return
   public async get3Last(req: Request, res: Response) {
     handleRequest(res, async () => {
       const editions = await EditionService.get3Last();
@@ -21,7 +19,21 @@ export default class EditionsController {
     });
   }
 
-  // eslint-disable-next-line consistent-return
+  public async getById(req: Request, res: Response) {
+    handleRequest(res, async () => {
+      const { params } = req;
+      const edition = await EditionService.getById(String(params.editionId));
+      return res.status(200).json({ status: 200, edition });
+    });
+  }
+
+  public async getNextEdition(req: Request, res: Response) {
+    handleRequest(res, async () => {
+      const edition = await EditionService.getNextEdition();
+      return res.status(200).json({ status: 200, edition });
+    });
+  }
+
   public create = async (req: Request, res: Response, next: NextFunction) => {
     try {
       Logger.debug('Inicio proceso de creacion Edicion');

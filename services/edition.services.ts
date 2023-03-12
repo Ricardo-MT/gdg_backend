@@ -51,6 +51,59 @@ class EditionService {
     }
   }
 
+  public getById = async (id: string): Promise<IEdition | null> => {
+    try {
+      const edition = await Edition.findById(id)
+        .populate({
+          path: 'talks',
+          populate: {
+            path: 'createdBy',
+          },
+        })
+        .populate({
+          path: 'talks',
+          populate: {
+            path: 'speakersIds',
+          },
+        });
+      if (edition) return edition;
+      throw new Error('Not found');
+    } catch (error) {
+      const e = 'Error buscando edición.';
+      throw new CustomError(error, e);
+    }
+  };
+
+  public getNextEdition = async (): Promise<IEdition | null> => {
+    try {
+      const now = new Date().valueOf();
+      const query = {
+        date: { $gt: now },
+      };
+      const editions = await Edition.find(query)
+        .sort({ date: 1 })
+        .limit(1)
+        .populate({
+          path: 'talks',
+          populate: {
+            path: 'createdBy',
+          },
+        })
+        .populate({
+          path: 'talks',
+          populate: {
+            path: 'speakersIds',
+          },
+        });
+
+      if (editions && editions[0]) return editions[0];
+      throw new Error('Not found');
+    } catch (error) {
+      const e = 'Error buscando próxima edición.';
+      throw new CustomError(error, e);
+    }
+  };
+
   // create
   public create = async (
     organizer: string,
